@@ -4,39 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bar" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.36"
-            android:text="      第三方平台用户登录"
-            android:textColor="#fff"
-            android:textSize="20dp" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="清除用户授权" />
-    </LinearLayout>
+   
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="vertical" >
+        
+		<TextView
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/share_text"
+		    android:textSize="25sp"
+		    android:layout_gravity="center"
+		    />      
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp" >
+            android:layout_marginLeft="5dp" >
 
             <ImageButton
                 android:id="@+id/imageButton1"
@@ -56,12 +44,11 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_tencent" />
 
-            <ImageButton
-                android:id="@+id/imageButton4"
+	        <ImageButton
+                android:id="@+id/imageButton6"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_kaixin" />
-
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_baidu" />
             <ImageButton
                 android:id="@+id/imageButton5"
                 android:layout_width="wrap_content"
@@ -71,49 +58,9 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingTop="15dp" >
+   
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp" >
-
-            <ImageButton
-                android:id="@+id/imageButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_baidu" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户信息"
-            android:textSize="16dp" />
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="320dp"
-            android:layout_height="199dp"
-            android:ems="10"
-            android:inputType="textMultiLine" >
-
-            <requestFocus />
-        </EditText>
-    </LinearLayout>
+   
 
     <LinearLayout
         android:layout_width="match_parent"

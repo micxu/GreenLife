@@ -54,13 +54,13 @@ public class ShareActivity extends Activity {
 
 		setContentView(R.layout.activity_share);
 
-		// 实例化baidu社会化登录，传入appkey
+		
 		socialLogin = BaiduSocialLogin.getInstance(this, appKey);
 
-		// 设置支持腾讯微博单点登录的appid
+		
 		socialLogin.supportQQSso(BaiduSocialShareConfig.QQ_SSO_APP_KEY);
 
-		// 设置支持新浪微博单点登录的appid
+		
 		socialLogin.supportWeiBoSso(BaiduSocialShareConfig.SINA_SSO_APP_KEY);
 
 		sinaWeibo = (ImageButton) findViewById(R.id.imageButton1);

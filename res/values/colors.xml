@@ -112,8 +112,12 @@
     <color name="wan_home_page_card_sub_title">#808080</color>
     <color name="wan_ranking_guide_text_red">#c66a46</color>
     <color name="wan_ranking_guide_divider">#cccccc</color>
+    <color name="image_border_start">#40990000</color>
+    <color name="image_border_end">#FF660000</color>
+    <color name="image_border_center">#FFFF3333</color>
 
     <!-- video -->
     <color name="video_detail_picture_bg">#383838</color>
+    <color name="backgroung_grey">#E4DECF</color>
 
 </resources>

@@ -9,16 +9,23 @@ import com.buaa.greenlife.thread.GetAllCommentsThread;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsListener;
 import com.buaa.greenlife.util.JsonUtil;
+import com.loopj.android.http.BinaryHttpResponseHandler;
+
+import com.loopj.android.http.AsyncHttpClient;
+
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,7 +39,10 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 	private TextView titleText;
 	private String baiduinfo;
 	private String id;
+	private String logo;
+	private ImageView myImageView;
 	
+	private AsyncHttpClient httpClient = new AsyncHttpClient();
 
 	
 	private ArrayList<HashMap<String, Object>> CommentslistData = new ArrayList<HashMap<String,Object>>();
@@ -50,11 +60,28 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		String title = intent.getStringExtra("title");
 		id = intent.getStringExtra("id");
 		baiduinfo = intent.getStringExtra("baidu_info");
+		logo = intent.getStringExtra("logo");
+		String seller= intent.getStringExtra("sellers");
 		
+		Log.e("error",seller.toString());
 		
-		likeButton.setText("Like("+likenumber.toString()+")");
+		likeButton.setText("Ï²»¶("+likenumber.toString()+")");
 		titleText.setText(title.toString());
+		sellerButton.setText("Âô¼Ò("+seller.toString()+")");
 		
+		 String[] allowedContentTypes = new String[]{"image/png", "image/jpeg"};
+		 httpClient.get(logo, new BinaryHttpResponseHandler(allowedContentTypes) {
+	            @Override
+	            public void onSuccess(byte[] fileData) {
+	                // Do something with the file
+	                try{
+	                    Bitmap bitmap = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
+	                    myImageView.setImageBitmap(bitmap);
+	                } catch (Exception e){
+	                    e.printStackTrace(); 
+	                }
+	            }
+	        });
 		
 		
 	}
@@ -77,6 +104,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		 sellerButton = (Button)findViewById(R.id.Buttonseller);
 		 baikeButton = (Button)findViewById(R.id.Buttonbaike);
 		 titleText = (TextView)findViewById(R.id.fooddetail_textview_title);
+		 myImageView = (ImageView)findViewById(R.id.fooddetail_imageview);
 		 
 		 Intent intent=getIntent();
 		 String drugid =  intent.getStringExtra("detail");
@@ -90,7 +118,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		 userCommentsListView.setAdapter(CommentslistItemAdapter);
 		// CommentslistItemAdapter.setData(mComments);
 		 //userCommentsListView.addHeaderView(contentView);
-		 
+		
 		 
 		 shareButton.setOnClickListener(new OnClickListener() {
 			
@@ -114,7 +142,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
 //				likeButton.setCompoundDrawables(drawable,null,null,null);
 				
-               // likeButton.setText("Ï²ï¿½ï¿½(237)");	    	
+                 	
 			}
 		});
 		 

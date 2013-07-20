@@ -18,6 +18,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.OverlayItem;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.buaa.baidumap.GPSPoint;
+import com.buaa.greenlife.MarketDetailActivity;
 import com.buaa.greenlife.R;
 
 /**
@@ -155,10 +156,10 @@ public class LocationFragment extends BaseFragment {
 			@Override
 			public void onClick(View view) {
 				// TODO jump to market detail activity
-//				Intent intent = new Intent(context, null);
+				Intent intent = new Intent(context, MarketDetailActivity.class);
 //				intent.putExtra("farm_id", detail_button.getFramId());
 //				intent.putExtra("farm_name", detail_button.getText());
-//				startActivity(intent);
+				startActivity(intent);
 			}
 		});
 	}

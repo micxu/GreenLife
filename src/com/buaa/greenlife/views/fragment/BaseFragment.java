@@ -1,10 +1,12 @@
 package com.buaa.greenlife.views.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -31,19 +33,28 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getAsyncInitViewResId();
 
     protected LinearLayout.LayoutParams defaultLayoutParams = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
 
     private InflateListener inflateListener = new InflateListener() {
         @Override
         public void onInflatedView(View view) {
             contentView = view;
-            containerView.addView(view, defaultLayoutParams);
+            containerView.addView(contentView, defaultLayoutParams);
             doInflated();
         }
     };
 
     private void doInflated() {
         onInflated();
+        handler.sendEmptyMessage(1);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        contentView = inflater.inflate(getAsyncInitViewResId(),container,false);
+        onInflated();
+        return contentView;
     }
 
     protected abstract void onInflated();
@@ -54,6 +65,7 @@ public abstract class BaseFragment extends Fragment {
         }
         this.handler = handler;
         this.context = context;
+        initView();
     }
 
     private void initView(){
@@ -69,6 +81,10 @@ public abstract class BaseFragment extends Fragment {
         AsyncInflater.getInstance().asyncInflate(LayoutInflater.from(context),
                 layoutId, new WeakReference<Handler>(handler),
                 new WeakReference<InflateListener>(inflateListener));
+    }
+
+    public View getContentView(){
+        return contentView;
     }
 
 }

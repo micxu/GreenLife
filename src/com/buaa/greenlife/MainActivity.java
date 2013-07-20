@@ -1,20 +1,21 @@
 package com.buaa.greenlife;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.buaa.greenlife.views.SlideBarLayout;
 import com.buaa.greenlife.views.fragment.BaseFragment;
 import com.buaa.greenlife.views.fragment.HealthyFoodFragment;
 import com.buaa.greenlife.views.fragment.LocationFragment;
@@ -25,7 +26,7 @@ import com.buaa.greenlife.views.fragment.VegetableListFragment;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -37,9 +38,13 @@ public class MainActivity extends Activity {
 
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private android.app.FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
 
     private Map<Integer, BaseFragment> fragmentMap = new HashMap<Integer, BaseFragment>();
+
+    private FrameLayout frameLayout;
+
+    private int selected = 0;
 
     private Handler handler = new Handler(){
         @Override
@@ -49,7 +54,13 @@ public class MainActivity extends Activity {
     };
 
     private void handleMessage(Message msg){
+        if (msg.what == 1){
+            if (fragmentManager == null){
+                fragmentManager = getSupportFragmentManager();
+            }
 
+            fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(selected)).commit();
+        }
     }
 
     @Override
@@ -65,17 +76,24 @@ public class MainActivity extends Activity {
         fragmentMap.put(3, new SnsFragment(this,handler));
         fragmentMap.put(4, new SettingAboutFragment(this,handler));
 
+        frameLayout = (FrameLayout)findViewById(R.id.content_frame);
+
         if (savedInstanceState == null) {
             selectItem(0);
         }
+
     }
 
     private void selectItem(int pos){
         if (fragmentManager == null){
-            fragmentManager = getFragmentManager();
+            fragmentManager = getSupportFragmentManager();
         }
 
-        fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(pos));
+        selected = pos;
+        fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(pos)).commit();
+//        frameLayout.removeAllViews();
+//        frameLayout.addView(fragmentMap.get(pos).getContentView());
+
 
         mDrawerList.setItemChecked(pos,true);
         mTitle = mPlanetTitles[pos];

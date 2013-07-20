@@ -16,7 +16,7 @@ public class HealthyFoodFragment extends BaseFragment {
 
     @Override
     protected int getAsyncInitViewResId() {
-        return R.layout.null_frame;
+        return R.layout.test;
     }
 
     @Override

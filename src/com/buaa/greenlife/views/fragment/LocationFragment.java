@@ -2,6 +2,9 @@ package com.buaa.greenlife.views.fragment;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
+
+import com.buaa.greenlife.R;
 
 /**
  * Created by QisenTang on 13-7-20.
@@ -13,11 +16,11 @@ public class LocationFragment extends BaseFragment{
 
     @Override
     protected int getAsyncInitViewResId() {
-        return 0;
+        return R.layout.test;
     }
 
     @Override
     protected void onInflated() {
-
+        Log.d("May", "on Inflated");
     }
 }

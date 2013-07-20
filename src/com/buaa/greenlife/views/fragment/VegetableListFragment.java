@@ -2,6 +2,7 @@ package com.buaa.greenlife.views.fragment;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import com.buaa.greenlife.R;
 
@@ -16,11 +17,10 @@ public class VegetableListFragment extends BaseFragment {
 
     @Override
     protected int getAsyncInitViewResId() {
-        return R.layout.null_frame;
+        return R.layout.test;
     }
 
     @Override
     protected void onInflated() {
-
     }
 }

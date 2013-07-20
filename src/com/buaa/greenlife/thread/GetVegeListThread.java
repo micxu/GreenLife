@@ -12,12 +12,11 @@ import android.util.Log;
 import com.buaa.configs.MyHealth;
 import com.buaa.greenlife.network.AbstractNetWorkThread;
 
-public class GetAllCommentsThread extends AbstractNetWorkThread implements Runnable{
+public class GetVegeListThread extends AbstractNetWorkThread implements Runnable{
 
-    private String mUrl;
-    private String productid;
-    private GetAllCommentsHandler handler;
-    
+	private String mUrl;
+    private GetVegeListHandler handler;
+	
     @Override
     public void run() {
         try {
@@ -25,12 +24,12 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
         	 Message msg = new Message();
              if (result != null ){
                  Bundle mBundle = new Bundle();
-                 mBundle.putString(MyHealth.Bundle_keys.COMMENTS_JSON, result);
+                 mBundle.putString(MyHealth.Bundle_keys.VEGELIST_JSON, result);
                  msg.setData(mBundle);
-                 msg.what = MyHealth.Msg.GET_ALLCOMMENTS_SUCCESSED;
+                 msg.what = MyHealth.Msg.GET_VEGELIST_SUCCESSED;
              } else{
                  // network error
-                 msg.what = MyHealth.Msg.GET_ALLCOMMENTS_fAILED;
+                 msg.what = MyHealth.Msg.GET_VEGELIST_fAILED;
              }
              handler.sendMessage(msg);
         } catch (ClientProtocolException e) {
@@ -40,22 +39,21 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
         }
     }
     
-    public GetAllCommentsThread(GetAllCommentsHandler handler,String drug_id){
-    	productid = drug_id.toString();  
+    public GetVegeListThread(GetVegeListHandler handler){
         this.handler = handler;
     }
     
-    public static interface GetAllCommentsListener{
+    public static interface GetVegeListListener{
         
-        public void getAllCommentsSuccessed(String json);
+        public void getVegeListSuccessed(String json);
         
-        public void getAllCommentsFailed();
+        public void getVegeListFailed();
     }
     
-    public static class GetAllCommentsHandler extends Handler{
-        private GetAllCommentsListener listener;
+    public static class GetVegeListHandler extends Handler{
+        private GetVegeListListener listener;
         
-        public GetAllCommentsHandler(GetAllCommentsListener listener){
+        public GetVegeListHandler(GetVegeListListener listener){
             this.listener = listener;
         }
 
@@ -63,15 +61,15 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-            case MyHealth.Msg.GET_ALLCOMMENTS_SUCCESSED:
+            case MyHealth.Msg.GET_VEGELIST_SUCCESSED:
             	Bundle bundle = msg.getData();
-                String json = bundle.getString(MyHealth.Bundle_keys.COMMENTS_JSON);
+                String json = bundle.getString(MyHealth.Bundle_keys.VEGELIST_JSON);
                 
                Log.e("error",json.toString());
-                listener.getAllCommentsSuccessed(json);
+                listener.getVegeListSuccessed(json);
                 break;
-            case MyHealth.Msg.GET_ALLCOMMENTS_fAILED:
-                listener.getAllCommentsFailed();
+            case MyHealth.Msg.GET_VEGELIST_fAILED:
+                listener.getVegeListFailed();
                 break;
             default:
                 break;
@@ -83,8 +81,16 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
     @Override
     public String getRequestUrl() {
     	//TODO api url
-        mUrl = MyHealth.Url.BASE_URL +  "/comments/product/"+productid+"/";
+        mUrl = MyHealth.Url.BASE_URL +  "/products/";
         return mUrl;
     }
+	
 
 }
+
+
+
+
+
+
+

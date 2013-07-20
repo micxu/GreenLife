@@ -48,6 +48,8 @@ public class MyHealth extends Application{
         public static final int GET_ALLCOMMENTS_fAILED = 8;
         public static final int GET_ALLPERSONNEWS_SUCCESSED = 9;
         public static final int GET_ALLPERSONNEWS_FAILD = 10;
+        public static final int GET_VEGELIST_SUCCESSED = 11;
+        public static final int GET_VEGELIST_fAILED = 12;
     }
     
     public static class Bundle_keys{
@@ -56,5 +58,6 @@ public class MyHealth extends Application{
         public static final String COMMENTS_JSON = "comments_json";
         public static final String DISEASE_TYPE = "disease_type";
         public static final String DETAIL_JSON = "detail_json";
+        public static final String VEGELIST_JSON = "vegelist_json";
     }
 }

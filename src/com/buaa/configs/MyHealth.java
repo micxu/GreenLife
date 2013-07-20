@@ -34,7 +34,7 @@ public class MyHealth extends Application{
     }
     
     public static class Url{
-        public static final String BASE_URL = "http://106.187.36.132:82";
+        public static final String BASE_URL = "http://192.168.1.194:1999";
     }
     
     public static class Msg{

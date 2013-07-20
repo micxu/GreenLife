@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 import com.buaa.greenlife.adapter.CommentsAdapter;
 import com.buaa.greenlife.bean.Comments;
+import com.buaa.greenlife.thread.GetAllCommentsThread;
+import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsHandler;
+import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsListener;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -18,7 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class FoodDetailActivity extends Activity {
+public class FoodDetailActivity extends Activity implements GetAllCommentsListener{
 	
 	private ListView userCommentsListView;
 	private Button likeButton;
@@ -38,6 +41,17 @@ public class FoodDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		initViews();
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(FoodDetailActivity.this);
+		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler,"1");
+		commentsThread.start();
+		super.onResume();
+	}
+
+	
 	protected void initViews() {
 		// TODO Auto-generated method stub
 		 setContentView(R.layout.activity_food_detail);
@@ -265,6 +279,21 @@ public class FoodDetailActivity extends Activity {
         return outBuffer.toString();
 
     }
+	@Override
+	public void getAllCommentsSuccessed(String json) {
+		// TODO Auto-generated method stub
+//		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
+//		Comments totalcomment = data.get(0);
+//		String commentstring = totalcomment.getmPoints();
+//		float totalpoints = Float.parseFloat(commentstring);
+//		data.remove(0);
+//		CommentslistItemAdapter.setData(data);
+	}
+	@Override
+	public void getAllCommentsFailed() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 	

@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.buaa.greenlife.views.custom.SimpleItem;
+import com.buaa.greenlife.views.custom.SlideDrawerAdapter;
 import com.buaa.greenlife.views.fragment.BaseFragment;
 import com.buaa.greenlife.views.fragment.HealthyFoodFragment;
 import com.buaa.greenlife.views.fragment.LocationFragment;
@@ -23,7 +25,9 @@ import com.buaa.greenlife.views.fragment.SettingAboutFragment;
 import com.buaa.greenlife.views.fragment.SnsFragment;
 import com.buaa.greenlife.views.fragment.VegetableListFragment;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends FragmentActivity {
@@ -45,6 +49,8 @@ public class MainActivity extends FragmentActivity {
     private FrameLayout frameLayout;
 
     private int selected = 0;
+
+    private SlideDrawerAdapter adapter;
 
     private Handler handler = new Handler(){
         @Override
@@ -91,14 +97,22 @@ public class MainActivity extends FragmentActivity {
 
         selected = pos;
         fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(pos)).commit();
-//        frameLayout.removeAllViews();
-//        frameLayout.addView(fragmentMap.get(pos).getContentView());
 
 
         mDrawerList.setItemChecked(pos,true);
         mTitle = mPlanetTitles[pos];
         getActionBar().setTitle(mTitle);
         mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    private List<SimpleItem> initSlideDrawer(){
+        List<SimpleItem> items = new ArrayList<SimpleItem>();
+        items.add(new SimpleItem(R.drawable.good,mPlanetTitles[0]));
+        items.add(new SimpleItem(R.drawable.content,mPlanetTitles[1]));
+        items.add(new SimpleItem(R.drawable.location,mPlanetTitles[2]));
+        items.add(new SimpleItem(R.drawable.social,mPlanetTitles[3]));
+        items.add(new SimpleItem(R.drawable.setting,mPlanetTitles[4]));
+        return items;
     }
 
     private void initDrawer(){
@@ -110,9 +124,15 @@ public class MainActivity extends FragmentActivity {
         // enable ActionBar app icon to behave as action to toggle nav drawer
 
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        adapter = new SlideDrawerAdapter(this);
+
         mPlanetTitles = getResources().getStringArray(R.array.function_array);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+
+        adapter.setData(initSlideDrawer());
+
+        mDrawerList.setAdapter(adapter);
+
+
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);

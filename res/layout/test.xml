@@ -10,8 +10,8 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:textColor="@color/darker_grey"
-            android:text="dd"
-            android:textSize="65dip"
+            android:text="@string/tips"
+            android:textSize="60dip"
             ></TextView>
 
 </FrameLayout>

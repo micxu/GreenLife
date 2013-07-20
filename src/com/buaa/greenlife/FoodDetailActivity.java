@@ -52,7 +52,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		baiduinfo = intent.getStringExtra("baidu_info");
 		
 		
-		likeButton.setText("Ï²»¶("+likenumber.toString()+")");
+		likeButton.setText("Like("+likenumber.toString()+")");
 		titleText.setText(title.toString());
 		
 		

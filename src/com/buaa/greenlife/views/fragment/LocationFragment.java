@@ -143,7 +143,7 @@ public class LocationFragment extends BaseFragment {
 			mOverlay.addItem(item);
 		}
 		OverlayItem item = new OverlayItem(myloc, "my_loc", "");
-		item.setMarker(context.getResources().getDrawable(R.drawable.icon_location));
+		//item.setMarker(context.getResources().getDrawable(R.drawable.icon_location));
 		mOverlay.addItem(item);
 		mMapView.getOverlays().add(mOverlay);
 		mMapView.refresh();

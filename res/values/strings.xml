@@ -19,14 +19,31 @@
         <item>关于设置</item>
     </string-array>
 
-	
-	<string name="name_overlay">Nearly points</string>
 
-    
-    
+    <string name="name_overlay">Nearly points</string>
+
+
     <string name="share_text">选择一个社交方式登陆吧</string>
 
     <string name="title_activity_simple_web_view">SimpleWebView</string>
 
+    <string name="food1">我叫南瓜，长的呆头呆脑，常给人以吓人的印象。
+        但在粗犷的外表下，跳动的是一颗细腻的心。
+        人们喜欢我，在世界上的很多角落，都能看到我的伙伴们的身影。
+        他们或者和面粉做伴，或者和奶油做伴，演绎着多彩的人生。
+    </string>
+
+    <string name="food2">
+        夏季天气炎热，少食多餐成为了大家喜欢的饮食方式。
+        待到月上柳梢头，凉风习习的时候，
+        约三五好友，吃一顿夜宵，喝几杯啤酒，
+        为忙碌的一天划上一个完美的句号，能有什么比这更惬意的吗？
+    </string>
+
+    <string name="food3">
+        长期吃夜宵的人，胃部负担会长期过重,
+        比一般人容易发生胃癌。但是，由于工作需要而熬夜的“夜猫子”人群，
+        凌晨往往是“饥寒交迫”的苦难时刻，这个时候吃点夜宵，补充能量是非常必要的。
+    </string>
 
 </resources>

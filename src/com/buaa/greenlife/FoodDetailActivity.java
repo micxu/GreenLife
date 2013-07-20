@@ -8,6 +8,7 @@ import com.buaa.greenlife.bean.Comments;
 import com.buaa.greenlife.thread.GetAllCommentsThread;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsListener;
+import com.buaa.greenlife.util.JsonUtil;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -77,7 +78,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
 		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
 		 userCommentsListView.setAdapter(CommentslistItemAdapter);
-		 CommentslistItemAdapter.setData(mComments);
+		// CommentslistItemAdapter.setData(mComments);
 		 //userCommentsListView.addHeaderView(contentView);
 		 
 		 
@@ -100,11 +101,10 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Drawable drawable= getResources().getDrawable(R.drawable.rating_good_black);
-				/// 这一步必须要做,否则不会显示.
 				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
 //				likeButton.setCompoundDrawables(drawable,null,null,null);
 				
-                likeButton.setText("喜欢(237)");	    	
+                likeButton.setText("喜锟斤拷(237)");	    	
 			}
 		});
 		 
@@ -252,7 +252,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 
                 if ((aChar < 0x0020) || (aChar > 0x007e)) {
 
-                    // 每个unicode有16位，每四位对应的16进制从高位保存到低位
+                    // 每锟斤拷unicode锟斤拷16位锟斤拷每锟斤拷位锟斤拷应锟斤拷16锟斤拷锟狡从革拷位锟斤拷锟芥到锟斤拷位
 
                     outBuffer.append('\\');
 
@@ -275,6 +275,8 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
             }
 
         }
+           
+        
 
         return outBuffer.toString();
 
@@ -282,12 +284,13 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 	@Override
 	public void getAllCommentsSuccessed(String json) {
 		// TODO Auto-generated method stub
-//		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
-//		Comments totalcomment = data.get(0);
+		//Log.e("error","hello");
+		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
+	//	Comments totalcomment = data.get(0);
 //		String commentstring = totalcomment.getmPoints();
 //		float totalpoints = Float.parseFloat(commentstring);
 //		data.remove(0);
-//		CommentslistItemAdapter.setData(data);
+		CommentslistItemAdapter.setData(data);
 	}
 	@Override
 	public void getAllCommentsFailed() {

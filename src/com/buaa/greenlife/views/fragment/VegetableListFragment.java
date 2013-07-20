@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.buaa.greenlife.R;
+import com.buaa.greenlife.bean.Comments;
 import com.buaa.greenlife.thread.GetVegeListThread;
 import com.buaa.greenlife.thread.GetVegeListThread.GetVegeListHandler;
 import com.buaa.greenlife.thread.GetVegeListThread.GetVegeListListener;
@@ -62,7 +64,10 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
         @Override
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
-							
+				//Intent to Laucnh Activity
+        		Intent intent = new Intent(context, .class);
+        		intent.putExtra("vegeData", vegeDataList.get(position));
+        		startActivity(intent);
 			}
 		});	
     	
@@ -82,22 +87,26 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
 		}
 		//JSON DUMP
 		try{
-			JSONObject jsonObject = new JSONObject(json);
-			Iterator keys = jsonObject.keys();
-			HashMap<String, String> map = new HashMap<String, String>();
-			
+			JSONObject jsonObject = new JSONObject(json);			
 			int count = jsonObject.getInt("count");
 			JSONArray jArray = jsonObject.getJSONArray("results");
-			
-			
-			
-			while(keys.hasNext()){
-				String key = (String) keys.next();
-				map.put(key, jsonObject.getString(key));
+					
+			for (int i = 0 ; i < count; i ++)
+			{
+				HashMap<String, String> map = new HashMap<String, String>();
+
+                JSONObject jObject = (JSONObject)jArray.get(i);
+                
+    			map.put("in_season_time", jObject.getString("in_season_time"));
+    			map.put("logo", jObject.getString("logo"));
+    			map.put("sellers", jObject.getString("sellers"));
+    			map.put("id", jObject.getString("id"));
+    			map.put("title", jObject.getString("title"));
+    			map.put("baidu_info", jObject.getString("baidu_info"));
+
+    		    vegeDataList.add(map);
 			}
-			
-		    vegeDataList.add(map);
-		    		    
+							    		    
 		    adapter = new VegeCustomListAdapter(context, vegeDataList);
 		    vegeList.setAdapter(adapter);
 		    

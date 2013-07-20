@@ -42,10 +42,11 @@ public class CommentsItem {
     }
 
     public void setTime(String mTime){
-    	String time = mTime+"000";
-    	Long timestamp = Long.parseLong(time);
-    	 CharSequence sysTimeStr = DateFormat.format("MMMM dd, yyyy h:mmaa", timestamp);
-    	 this.mTime.setText(sysTimeStr);
+    	
+    	String newTime = mTime.replace("T", "   ");
+    	String nnewTime = newTime.replace("Z", "");
+    	//CharSequence sysTimeStr = DateFormat.format("MMMM dd, yyyy h:mmaa", timestamp);
+    	 this.mTime.setText(nnewTime);
     }
     
     public void setPoints(String mPoints) {

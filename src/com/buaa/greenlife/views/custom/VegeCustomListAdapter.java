@@ -59,9 +59,9 @@ public class VegeCustomListAdapter extends BaseAdapter{
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
        
         // Setting all values in listview
-        title.setText(vege.get("vege_name"));
-        time_left.setText(vege.get("vege_time"));
-        hot_rate.setText(vege.get("vege_rate"));
+        title.setText(vege.get("title"));
+        time_left.setText(vege.get("in_season_time") + "w");
+        hot_rate.setText(vege.get("like_users"));
         //Ready to get Image
         //imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
         

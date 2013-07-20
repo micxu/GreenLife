@@ -18,10 +18,10 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.buaa.baidumap.NearlyPos"
             android:configChanges="orientation|keyboardHidden"
@@ -32,6 +32,7 @@
             android:name="com.buaa.greenlife.FoodDetailActivity"
             android:label="@string/app_name" >
         </activity>
+
         <activity
             android:name="com.buaa.greenlife.ShareActivity"
             android:label="@string/app_name" >

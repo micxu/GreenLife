@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_selector"
+    android:background="@color/backgroung_grey"
     android:orientation="horizontal"
     android:padding="5dip" >
 
@@ -16,39 +16,77 @@
         android:layout_marginRight="5dip"
         android:background="@drawable/image_bg"
         android:padding="3dip" >
-            
-    <ImageView
+
+        <ImageView
             android:id="@+id/list_image"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:src="@drawable/rihanna" />
+            android:src="@drawable/cai" />
     </LinearLayout>
 
-    <!-- Title Of Song -->
+    <!-- Vege Name -->
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="人形生菜"
-        android:textColor="#040404"
-        android:textSize="15dip"
-        android:textStyle="bold"
-        android:typeface="sans" />
+    <!-- Vege Likes -->
 
     <TextView
         android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
         android:layout_alignBottom="@+id/thumbnail"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:text="2周"
+        android:layout_toRightOf="@+id/ImageView01"
+        android:text="2w"
         android:textColor="#040404"
         android:textSize="15dip"
         android:textStyle="bold"
         android:typeface="sans" />
+    
+      <!-- Rightend Arrow -->
+
+     <ImageView
+         android:layout_width="15dip"
+         android:layout_height="15dip"
+         android:layout_alignParentRight="true"
+         android:layout_centerVertical="true"
+         android:src="@drawable/arrow" />
+
+     <TextView
+         android:id="@+id/title"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignTop="@+id/thumbnail"
+         android:layout_toRightOf="@+id/thumbnail"
+         android:text="人形生菜"
+         android:textColor="#040404"
+         android:textSize="15dip"
+         android:textStyle="bold"
+         android:typeface="sans" />
+
+     <ImageView
+         android:id="@+id/ImageView01"
+         android:layout_width="20dip"
+         android:layout_height="20dip"
+         android:layout_alignLeft="@+id/title"
+         android:layout_alignTop="@+id/TextView01"
+         android:src="@drawable/bookmark" />
+
+     <ImageView
+         android:id="@+id/ImageView02"
+         android:layout_width="20dip"
+         android:layout_height="20dip"
+         android:layout_alignTop="@+id/TextView01"
+         android:layout_toRightOf="@+id/TextView01"
+         android:src="@drawable/rating_good" />
+
+     <TextView
+         android:id="@+id/TextView02"
+         android:layout_width="25dp"
+         android:layout_height="20dp"
+         android:layout_alignTop="@+id/ImageView02"
+         android:layout_toRightOf="@+id/ImageView02"
+         android:text="8"
+         android:textColor="#040404"
+         android:textSize="15dip"
+         android:textStyle="bold"
+         android:typeface="sans" />
 
 </RelativeLayout>

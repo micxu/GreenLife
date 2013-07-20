@@ -54,14 +54,16 @@ public class VegeCustomListAdapter extends BaseAdapter{
 	    vege = data.get(pos);
 	        
 		TextView title = (TextView)vi.findViewById(R.id.title); // title
-        TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
-        TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
+        TextView time_left = (TextView)vi.findViewById(R.id.TextView01); //time_left
+        TextView hot_rate = (TextView)vi.findViewById(R.id.TextView02); // hot_rate
         ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
        
         // Setting all values in listview
-        //title.setText(vege.get(CustomizedListView.KEY_TITLE));
-        //artist.setText(vege.get(CustomizedListView.KEY_ARTIST));
-        //duration.setText(vege.get(CustomizedListView.KEY_DURATION));
+        title.setText(vege.get("vege_name"));
+        time_left.setText(vege.get("vege_time"));
+        hot_rate.setText(vege.get("vege_rate"));
+        //Ready to get Image
+        //imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
         
         return vi;
 	}

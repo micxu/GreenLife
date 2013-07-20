@@ -67,15 +67,15 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
             	Bundle bundle = msg.getData();
                 String json = bundle.getString(MyHealth.Bundle_keys.COMMENTS_JSON);
                 
-               Log.e("error",json.toString());
+               //Log.e("error",json.toString());
                 listener.getAllCommentsSuccessed(json);
                 break;
             case MyHealth.Msg.GET_ALLCOMMENTS_fAILED:
                 listener.getAllCommentsFailed();
                 break;
             default:
-                break;
-            }
+                break;    
+            }   
         }
         
     }

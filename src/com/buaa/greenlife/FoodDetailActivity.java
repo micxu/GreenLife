@@ -8,6 +8,7 @@ import com.buaa.greenlife.bean.Comments;
 import com.buaa.greenlife.thread.GetAllCommentsThread;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.greenlife.thread.GetAllCommentsThread.GetAllCommentsListener;
+import com.buaa.greenlife.util.JsonUtil;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -77,7 +78,7 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
 		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
 		 userCommentsListView.setAdapter(CommentslistItemAdapter);
-		 CommentslistItemAdapter.setData(mComments);
+		// CommentslistItemAdapter.setData(mComments);
 		 //userCommentsListView.addHeaderView(contentView);
 		 
 		 
@@ -275,6 +276,8 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
             }
 
         }
+           
+        
 
         return outBuffer.toString();
 
@@ -282,12 +285,13 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 	@Override
 	public void getAllCommentsSuccessed(String json) {
 		// TODO Auto-generated method stub
-//		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
-//		Comments totalcomment = data.get(0);
+		//Log.e("error","hello");
+		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
+	//	Comments totalcomment = data.get(0);
 //		String commentstring = totalcomment.getmPoints();
 //		float totalpoints = Float.parseFloat(commentstring);
 //		data.remove(0);
-//		CommentslistItemAdapter.setData(data);
+		CommentslistItemAdapter.setData(data);
 	}
 	@Override
 	public void getAllCommentsFailed() {

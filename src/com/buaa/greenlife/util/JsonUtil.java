@@ -48,21 +48,22 @@ public class JsonUtil {
     
     public static ArrayList<Comments> praseCommentsJson(String json){
         ArrayList<Comments> allcomments = new ArrayList<Comments>();
-        try {
+        try {     
             
             JSONObject jsonobject = new JSONObject(json);
-            JSONObject jsondrug = jsonobject.getJSONObject("drugs");
-            String total = jsondrug.getString(Keys.SCORE_AVG);
-            Comments commentitemtotal = new Comments("","",total,"");
-            allcomments.add(commentitemtotal);
-            if (jsonobject.getInt(Keys.ERRORCODE) == 0){
-                JSONArray comments = jsondrug.getJSONArray(Keys.COMMENTS);
+            JSONArray comments = jsonobject.getJSONArray("results");
+            String total = jsonobject.getString("count");
+            //Log.e("error","hehe"+total.toString());
+            //Comments commentitemtotal = new Comments("","",total,"");
+            //allcomments.add(commentitemtotal);
+            if (jsonobject !=null){
+               
                 for (int i = 0 ; i < comments.length(); i ++){
                     JSONObject comment = (JSONObject)comments.get(i);
-                    Comments commentitem = new Comments(comment.getString("user"),comment.getString("description"),comment.getString("score"),comment.getString("comment_time"));
-                 
-                    allcomments.add(commentitem);
-                }
+                    //Log.e("error","hehe"+comment.toString());
+                    Comments commentitem = new Comments(comment.getString("user_name"),comment.getString("comment"),"4.5",comment.getString("submit_date"));
+                    allcomments.add(commentitem);                
+                    }
             }
         } catch (JSONException e) {
             e.printStackTrace();

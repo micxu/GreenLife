@@ -54,7 +54,6 @@ public class ShareActivity extends Activity {
 
 		setContentView(R.layout.activity_share);
 
-		
 		socialLogin = BaiduSocialLogin.getInstance(this, appKey);
 
 		

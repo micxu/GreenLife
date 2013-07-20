@@ -27,6 +27,7 @@ public class HealthyFoodFragment extends BaseFragment {
     @Override
     protected void onInflated() {
         viewPager = (ViewPager)contentView.findViewById(R.id.foodList);
-        
+        adpater = new HealthyFoodPageAdapter(context);
+        viewPager.setAdapter(adpater);
     }
 }

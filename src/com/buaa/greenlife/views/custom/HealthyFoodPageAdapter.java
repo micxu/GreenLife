@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by QisenTang on 13-7-21.
  */
-public class HealthyFoodPageAdapter extends PagerAdapter{
+public class HealthyFoodPageAdapter extends PagerAdapter {
 
 
     private final Context context;
@@ -32,12 +32,16 @@ public class HealthyFoodPageAdapter extends PagerAdapter{
 
     private List<View> pageViews = new ArrayList<View>();
 
-    public HealthyFoodPageAdapter(Context context){
+    public HealthyFoodPageAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
-        foodList.add(new FoodListItem("dd",false, context.getResources().getDrawable(R.drawable.food1)));
-        foodList.add(new FoodListItem("dd",false, context.getResources().getDrawable(R.drawable.food2)));
-        foodList.add(new FoodListItem("dd",false, context.getResources().getDrawable(R.drawable.food3)));
+        foodList.add(new FoodListItem(context.getResources().getString(R.string.food1), false, context.getResources().getDrawable(R.drawable.food1)));
+        foodList.add(new FoodListItem(context.getResources().getString(R.string.food2), false, context.getResources().getDrawable(R.drawable.food2)));
+        foodList.add(new FoodListItem(context.getResources().getString(R.string.food3), false, context.getResources().getDrawable(R.drawable.food3)));
+        for (FoodListItem item : foodList) {
+            pageViews.add(item.generateView());
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -57,11 +61,11 @@ public class HealthyFoodPageAdapter extends PagerAdapter{
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(pageViews.get(position),0);
-        return super.instantiateItem(container, position);
+        container.addView(pageViews.get(position), 0);
+        return pageViews.get(position);
     }
 
-    private class FoodListItem{
+    private class FoodListItem {
         private String desc;
         private boolean graphAbove;
         private Drawable bitmap;
@@ -84,10 +88,10 @@ public class HealthyFoodPageAdapter extends PagerAdapter{
             return bitmap;
         }
 
-        public View generateView(){
-            View contentView = inflater.inflate(R.layout.fooddisplayitem,null);
-            ((ImageView)contentView.findViewById(R.id.food_graph)).setImageDrawable(bitmap);
-            ((TextView)contentView.findViewById(R.id.food_desc)).setText(desc);
+        public View generateView() {
+            View contentView = inflater.inflate(R.layout.fooddisplayitem, null);
+            ((ImageView) contentView.findViewById(R.id.food_graph)).setImageDrawable(bitmap);
+            ((TextView) contentView.findViewById(R.id.food_desc)).setText(desc);
             return contentView;
         }
     }

@@ -19,5 +19,6 @@
         <item>好友消息</item>
         <item>关于设置</item>
     </string-array>
-
+	
+	<string name="name_overlay">Nearly points</string>
 </resources>

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.buaa.greenlife.network.ImageCache;
 import com.buaa.greenlife.views.custom.SimpleItem;
 import com.buaa.greenlife.views.custom.SlideDrawerAdapter;
 import com.buaa.greenlife.views.fragment.BaseFragment;
@@ -56,15 +57,20 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void handleMessage(Message msg) {
             MainActivity.this.handleMessage(msg);
+            fragmentMap.get(0).handleMessage(msg);
+            fragmentMap.get(1).handleMessage(msg);
+            fragmentMap.get(2).handleMessage(msg);
+            fragmentMap.get(3).handleMessage(msg);
+            fragmentMap.get(4).handleMessage(msg);
         }
     };
 
     private void handleMessage(Message msg){
+
         if (msg.what == 1){
             if (fragmentManager == null){
                 fragmentManager = getSupportFragmentManager();
             }
-
             fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(selected)).commit();
         }
     }
@@ -87,7 +93,7 @@ public class MainActivity extends FragmentActivity {
         if (savedInstanceState == null) {
             selectItem(0);
         }
-
+        ImageCache.getInstance().setHandler(handler);
     }
 
     private void selectItem(int pos){

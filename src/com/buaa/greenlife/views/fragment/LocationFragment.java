@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +55,12 @@ public class LocationFragment extends BaseFragment {
 		return R.layout.activity_overlay;
 	}
 
-	@Override
+    @Override
+    public void handleMessage(Message msg) {
+
+    }
+
+    @Override
 	protected void onInflated() {
 		Log.d("May", "on Inflated");
 

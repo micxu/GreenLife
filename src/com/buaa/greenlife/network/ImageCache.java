@@ -34,6 +34,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StatFs;
 import android.text.TextUtils;
+import android.util.Log;
 
 public class ImageCache {
 
@@ -184,6 +185,7 @@ public class ImageCache {
 					
 					@Override
 					public void run() {
+                        Log.d("May", "send Message");
 						handler.sendEmptyMessage(MyHealth.Msg.IMG_LOADED_COMPLETED);
 						freshImgWaiting = false;
 					}

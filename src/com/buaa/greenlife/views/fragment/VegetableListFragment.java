@@ -66,7 +66,15 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
 				int position, long id) {
 				//Intent to Laucnh Activity
         		Intent intent = new Intent(context, .class);
-        		intent.putExtra("vegeData", vegeDataList.get(position));
+        		
+        		intent.putExtra("in_season_time", vegeDataList.get(position).get("in_season_time"));
+        		intent.putExtra("like_users", vegeDataList.get(position).get("like_users"));
+        		intent.putExtra("logo", vegeDataList.get(position).get("logo"));
+        		intent.putExtra("sellers", vegeDataList.get(position).get("sellers"));
+        		intent.putExtra("id", vegeDataList.get(position).get("id"));
+        		intent.putExtra("title", vegeDataList.get(position).get("title"));
+        		intent.putExtra("baidu_info", vegeDataList.get(position).get("baidu_info"));
+
         		startActivity(intent);
 			}
 		});	

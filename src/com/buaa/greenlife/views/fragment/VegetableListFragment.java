@@ -1,6 +1,5 @@
 package com.buaa.greenlife.views.fragment;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -48,8 +47,6 @@ public class VegetableListFragment extends BaseFragment {
     	Gson gson = new Gson();
 
     	Veges[] veges = gson.fromJson(jsonString,  Veges[].class);
-    	
-    	Log.e("CAO", veges[0].toString());
     	
     	adapter = new VegeCustomListAdapter(context, vegeDataList);
     	vegeList.setAdapter(adapter);

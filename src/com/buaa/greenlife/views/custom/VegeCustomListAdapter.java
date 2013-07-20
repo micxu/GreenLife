@@ -1,7 +1,5 @@
 package com.buaa.greenlife.views.custom;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -74,6 +72,7 @@ public class VegeCustomListAdapter extends BaseAdapter {
             @Override
             public void onSuccess(byte[] fileData) {
                 // Do something with the file
+            	if(null == fileData)	return;
                 try{
                     Bitmap bitmap = BitmapFactory.decodeByteArray(fileData, 0, fileData.length);
                     thumb_image.setImageBitmap(bitmap);
@@ -85,8 +84,8 @@ public class VegeCustomListAdapter extends BaseAdapter {
 
         // Setting all values in listview
         title.setText(vege.get("title"));
-        time_left.setText(vege.get("in_season_time") + "w");
-        hot_rate.setText(vege.get("like_users"));
+        time_left.setText(vege.get("in_season_time") + "周");
+        hot_rate.setText(vege.get("like_users_count"));
         //Ready to get Image
         //imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
 

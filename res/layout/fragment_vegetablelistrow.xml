@@ -34,30 +34,6 @@
         android:layout_centerVertical="true"
         android:src="@drawable/arrow" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="人形生菜"
-        android:textColor="#040404"
-        android:textSize="18dip"
-        android:textStyle="bold"
-        android:typeface="sans" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_alignTop="@+id/ImageView02"
-        android:layout_toRightOf="@+id/ImageView02"
-        android:text="8"
-        android:textColor="#040404"
-        android:textSize="15dip"
-        android:textStyle="bold"
-        android:typeface="sans" />
-
     <!-- Rightend Duration -->
 
 
@@ -72,30 +48,57 @@
         android:src="@drawable/arrow" />
 
     <ImageView
+        android:id="@+id/ImageView02"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_alignTop="@+id/ImageView01"
+        android:layout_marginRight="27dp"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:src="@drawable/rating_good" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/ImageView02"
+        android:layout_toLeftOf="@+id/imageView1"
+        android:text="8"
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/ImageView01"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/ImageView02"
+        android:text="2w"
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <ImageView
         android:id="@+id/ImageView01"
         android:layout_width="20dip"
         android:layout_height="20dip"
         android:layout_alignBottom="@+id/thumbnail"
-        android:layout_alignLeft="@+id/title"
+        android:layout_toLeftOf="@+id/TextView01"
         android:src="@drawable/bookmark" />
 
-    <ImageView
-        android:id="@+id/ImageView02"
-        android:layout_width="20dip"
-        android:layout_height="20dip"
-        android:layout_alignRight="@+id/title"
-        android:layout_alignTop="@+id/ImageView01"
-        android:src="@drawable/rating_good" />
-
     <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_alignTop="@+id/ImageView02"
-        android:layout_toRightOf="@+id/ImageView01"
-        android:text="2w"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ImageView01"
+        android:layout_marginLeft="21dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="人形生菜"
         android:textColor="#040404"
-        android:textSize="15dip"
+        android:textSize="18dip"
         android:textStyle="bold"
         android:typeface="sans" />
 

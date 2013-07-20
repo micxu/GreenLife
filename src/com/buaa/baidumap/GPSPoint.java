@@ -25,8 +25,8 @@ public class GPSPoint implements Parcelable{
 		this.id = id;
 	}
 
-	double x;
-	double y;
+	public double x;
+	public double y;
 	String title;
 	String id;
 	

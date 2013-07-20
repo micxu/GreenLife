@@ -17,12 +17,7 @@
             android:name="com.buaa.greenlife.MainActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity
-            android:name="com.buaa.baidumap.NearlyPos"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/name_overlay"
-            android:screenOrientation="sensor" >
-        </activity>
+        
         <activity
             android:name="com.buaa.greenlife.FoodDetailActivity"
             android:label="@string/app_name" >

@@ -54,7 +54,6 @@ public abstract class BaseFragment extends Fragment {
         }
         this.handler = handler;
         this.context = context;
-        initView();
     }
 
     private void initView(){

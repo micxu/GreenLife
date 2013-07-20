@@ -48,7 +48,7 @@ public class ShareActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
@@ -65,22 +65,14 @@ public class ShareActivity extends Activity {
 		sinaWeibo = (ImageButton) findViewById(R.id.imageButton1);
 		qqzone = (ImageButton) findViewById(R.id.imageButton2);
 		qqWeibo = (ImageButton) findViewById(R.id.imageButton3);
-		kaixin = (ImageButton) findViewById(R.id.imageButton4);
 		renren=(ImageButton)findViewById(R.id.imageButton5);
 		
 		
-		clean = (Button) findViewById(R.id.button1);
+		
 
 		baidu=(ImageButton)findViewById(R.id.imageButton6);
 		
-		clean.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				socialLogin.cleanAllAccessToken();
-			}
-		});
+		
 
 		sinaWeibo.setOnClickListener(new OnClickListener() {
 			@Override
@@ -118,8 +110,8 @@ public class ShareActivity extends Activity {
 			handler.post(new Runnable() {
 				@Override
 				public void run() {
-					info = (EditText) findViewById(R.id.editText1);
-					info.setText(Utility.decodeUnicode(responseStr));
+					//info = (EditText) findViewById(R.id.editText1);
+					//info.setText(Utility.decodeUnicode(responseStr));
 				}
 			});
 		}
@@ -130,8 +122,8 @@ public class ShareActivity extends Activity {
 			handler.post(new Runnable() {
 				@Override
 				public void run() {
-					info = (EditText) findViewById(R.id.editText1);
-					info.setText(error);
+					//info = (EditText) findViewById(R.id.editText1);
+					//info.setText(error);
 				}
 			});
 		}

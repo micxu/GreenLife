@@ -8,7 +8,6 @@
     <string name="title_activity_share">ShareActivity</string>
     <string name="cai">生菜</string>
     <string name="title_activity_food_detial">FoodDetialActivity</string>
-
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
@@ -19,6 +18,15 @@
         <item>好友消息</item>
         <item>关于设置</item>
     </string-array>
+
 	
 	<string name="name_overlay">Nearly points</string>
+
+    
+    
+    <string name="share_text">选择一个社交方式登陆吧</string>
+
+    <string name="title_activity_simple_web_view">SimpleWebView</string>
+
+
 </resources>

@@ -21,6 +21,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
+import com.buaa.Utils;
 import com.buaa.configs.MyHealth;
 import com.buaa.greenlife.FoodDetailActivity;
 import com.buaa.greenlife.R;

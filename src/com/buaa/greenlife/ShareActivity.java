@@ -1,5 +1,8 @@
 package com.buaa.greenlife;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.baidu.social.core.BaiduSocialException;
 import com.baidu.social.core.BaiduSocialListener;
 import com.baidu.social.core.Utility;
@@ -11,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -106,12 +110,23 @@ public class ShareActivity extends Activity {
 		@Override
 		public void onApiComplete(String responses) {
 			// TODO Auto-generated method stub
+			
+			
 			final String responseStr = responses;
 			handler.post(new Runnable() {
 				@Override
 				public void run() {
 					//info = (EditText) findViewById(R.id.editText1);
-					//info.setText(Utility.decodeUnicode(responseStr));
+					String result= Utility.decodeUnicode(responseStr);
+					Log.e("error", Utility.SHARE_TYPE_SINA_WEIBO.toString());
+					try {
+						JSONObject jsonobject = new JSONObject(result);
+                        //String socilID = jsonobject.getString("social_uid");
+                        
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			});
 		}
@@ -124,6 +139,8 @@ public class ShareActivity extends Activity {
 				public void run() {
 					//info = (EditText) findViewById(R.id.editText1);
 					//info.setText(error);
+					//String result= Utility.decodeUnicode(responseStr);
+					Log.e("error", error.toString());
 				}
 			});
 		}

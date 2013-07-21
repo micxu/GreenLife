@@ -11,6 +11,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.map.ItemizedOverlay;
@@ -149,7 +150,7 @@ public class LocationFragment extends BaseFragment {
 					R.drawable.icon_marka));
 			mOverlay.addItem(item);
 		}
-		OverlayItem item = new OverlayItem(myloc, "my_loc", "");
+		OverlayItem item = new OverlayItem(myloc, context.getResources().getString(R.string.cheku), "");
 		item.setMarker(context.getResources().getDrawable(R.drawable.icon_location));
 		mOverlay.addItem(item);
 		mMapView.getOverlays().add(mOverlay);
@@ -162,10 +163,15 @@ public class LocationFragment extends BaseFragment {
 			@Override
 			public void onClick(View view) {
 				// TODO jump to market detail activity
-				Intent intent = new Intent(context, MarketDetailActivity.class);
-//				intent.putExtra("farm_id", detail_button.getFramId());
-//				intent.putExtra("farm_name", detail_button.getText());
-				startActivity(intent);
+				if(detail_button.getFramId() == ""){
+					Toast.makeText(context, "my own location", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Intent intent = new Intent(context, MarketDetailActivity.class);
+//					intent.putExtra("farm_id", detail_button.getFramId());
+//					intent.putExtra("farm_name", detail_button.getText());
+					startActivity(intent);
+				}
 			}
 		});
 	}
@@ -195,7 +201,8 @@ public class LocationFragment extends BaseFragment {
 		@Override
 		public boolean onTap(GeoPoint pt, MapView mapview) {
 			// TODO Auto-generated method stub
-			return super.onTap(pt, mapview);
+			mMapView.removeView(detail_button);
+			return false;
 		}
 
 		@Override

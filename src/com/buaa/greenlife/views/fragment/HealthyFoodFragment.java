@@ -2,6 +2,7 @@ package com.buaa.greenlife.views.fragment;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 
 import com.buaa.greenlife.R;
@@ -22,6 +23,11 @@ public class HealthyFoodFragment extends BaseFragment {
     @Override
     protected int getAsyncInitViewResId() {
         return R.layout.healthyfood;
+    }
+
+    @Override
+    public void handleMessage(Message msg) {
+
     }
 
     @Override

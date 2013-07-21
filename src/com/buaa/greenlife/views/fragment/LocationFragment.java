@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,15 +36,15 @@ public class LocationFragment extends BaseFragment {
 	private MapButton detail_button = null;
 	private MapView.LayoutParams layoutParams = null;
 
-	private double x = 39.945;
-	private double y = 116.404;
+	private double x = 39.989928;
+	private double y = 116.313423;
 	
 	private String result_data;
 
 	public LocationFragment(Context context, Handler handler) {
 		super(context, handler);
 		createdata();
-		getDataFromInternet();
+		// getDataFromInternet();
 	}
 
 	@Override
@@ -54,7 +55,12 @@ public class LocationFragment extends BaseFragment {
 		return R.layout.activity_overlay;
 	}
 
-	@Override
+    @Override
+    public void handleMessage(Message msg) {
+
+    }
+
+    @Override
 	protected void onInflated() {
 		Log.d("May", "on Inflated");
 
@@ -74,24 +80,24 @@ public class LocationFragment extends BaseFragment {
 		points = new ArrayList<GPSPoint>();
 		double x_ = x;
 		double y_ = y;
-		GPSPoint point = new GPSPoint(x_ + 0.02, y_ + 0.01);
+		GPSPoint point = new GPSPoint(x_ + 0.005, y_ + 0.01);
 		point.setId("bj_" + 1);
-		point.setTitle("farm_" + 1);
+		point.setTitle(context.getResources().getString(R.string.bidanyuan));
 		points.add(point);
 		
-		point = new GPSPoint(x_ - 0.01, y_ - 0.01);
+		point = new GPSPoint(x_ - 0.01, y_ - 0.005);
 		point.setId("bj_" + 2);
-		point.setTitle("farm_" + 2);
+		point.setTitle(context.getResources().getString(R.string.yangguangshengjing));
 		points.add(point);
 		
-		point = new GPSPoint(x_ + 0.02, y_ - 0.03);
+		point = new GPSPoint(x_ + 0.01, y_ - 0.015);
 		point.setId("bj_" + 3);
-		point.setTitle("farm_" + 3);
+		point.setTitle(context.getResources().getString(R.string.lvseyingxiong));
 		points.add(point);
 		
-		point = new GPSPoint(x_ - 0.02, y_ + 0.02);
+		point = new GPSPoint(x_ - 0.01, y_ + 0.01);
 		point.setId("bj_" + 4);
-		point.setTitle("farm_" + 4);
+		point.setTitle(context.getResources().getString(R.string.taohuadao));
 		points.add(point);
 		
 		
@@ -144,7 +150,7 @@ public class LocationFragment extends BaseFragment {
 			mOverlay.addItem(item);
 		}
 		OverlayItem item = new OverlayItem(myloc, "my_loc", "");
-		//item.setMarker(context.getResources().getDrawable(R.drawable.icon_location));
+		item.setMarker(context.getResources().getDrawable(R.drawable.icon_location));
 		mOverlay.addItem(item);
 		mMapView.getOverlays().add(mOverlay);
 		mMapView.refresh();

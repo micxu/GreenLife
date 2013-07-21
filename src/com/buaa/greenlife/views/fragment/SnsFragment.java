@@ -2,6 +2,7 @@ package com.buaa.greenlife.views.fragment;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 
 import com.buaa.greenlife.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -20,6 +21,11 @@ public class SnsFragment extends BaseFragment {
     @Override
     protected int getAsyncInitViewResId() {
         return R.layout.test;
+    }
+
+    @Override
+    public void handleMessage(Message msg) {
+
     }
 
     @Override

@@ -11,15 +11,21 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.buaa.configs.MyHealth;
 import com.buaa.greenlife.FoodDetailActivity;
 import com.buaa.greenlife.R;
 import com.buaa.greenlife.bean.Comments;
+import com.buaa.greenlife.network.ImageCache;
 import com.buaa.greenlife.thread.GetVegeListThread;
 import com.buaa.greenlife.thread.GetVegeListThread.GetVegeListHandler;
 import com.buaa.greenlife.thread.GetVegeListThread.GetVegeListListener;
@@ -42,6 +48,19 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
     @Override
     protected int getAsyncInitViewResId() {
         return R.layout.fragment_vegetablelist;
+    }
+
+    public void handleMessage(Message message) {
+        switch(message.what){
+            case MyHealth.Msg.IMG_LOADED_COMPLETED:
+                if (adapter != null){
+                    Log.d("May","notified");
+                    adapter.notifyDataSetChanged();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -75,6 +94,7 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
                 intent.putExtra("id", vegeDataList.get(position).get("id").toString());
                 intent.putExtra("title", vegeDataList.get(position).get("title").toString());
                 intent.putExtra("baidu_info", vegeDataList.get(position).get("baidu_info").toString());
+                intent.putExtra("like_users_count", vegeDataList.get(position).get("like_users_count").toString());
 
                 startActivity(intent);
             }
@@ -107,10 +127,11 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
 
                 map.put("in_season_time", jObject.getString("in_season_time"));
                 map.put("logo", jObject.getString("logo"));
-                map.put("sellers", jObject.getString("sellers"));
+                map.put("sellers", jObject.getString("sellers_count"));
                 map.put("id", jObject.getString("id"));
                 map.put("title", jObject.getString("title"));
                 map.put("baidu_info", jObject.getString("baidu_info"));
+                map.put("like_users_count", jObject.getString("like_users_count"));
 
                 vegeDataList.add(map);
             }

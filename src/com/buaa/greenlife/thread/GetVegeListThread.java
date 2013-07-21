@@ -65,7 +65,6 @@ public class GetVegeListThread extends AbstractNetWorkThread implements Runnable
             	Bundle bundle = msg.getData();
                 String json = bundle.getString(MyHealth.Bundle_keys.VEGELIST_JSON);
                 
-               Log.e("error",json.toString());
                 listener.getVegeListSuccessed(json);
                 break;
             case MyHealth.Msg.GET_VEGELIST_fAILED:

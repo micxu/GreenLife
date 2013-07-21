@@ -3,6 +3,7 @@ package com.buaa.greenlife.views.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ public abstract class BaseFragment extends Fragment {
     protected Handler handler;
 
     protected abstract int getAsyncInitViewResId();
+
+    public abstract void handleMessage(Message msg);
 
     protected LinearLayout.LayoutParams defaultLayoutParams = new LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);

@@ -3,6 +3,7 @@ package com.buaa.greenlife.views.custom;
 import com.buaa.greenlife.R;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 
 import com.buaa.greenlife.views.fragment.*;
@@ -22,7 +23,12 @@ public class VegetableListFragment extends BaseFragment {
 		return R.layout.fragment_vegetablelist;
 	}
 
-	@Override
+    @Override
+    public void handleMessage(Message msg) {
+
+    }
+
+    @Override
 	protected void onInflated() {
 		// TODO draw content view with swipe tabs
 	}

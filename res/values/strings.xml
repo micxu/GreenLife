@@ -47,5 +47,6 @@
         比一般人容易发生胃癌。但是，由于工作需要而熬夜的“夜猫子”人群，
         凌晨往往是“饥寒交迫”的苦难时刻，这个时候吃点夜宵，补充能量是非常必要的。
     </string>
-
+	<string name="like">喜欢</string>
+	<string name="seller">商家</string>
 </resources>

@@ -65,9 +65,11 @@ public class FoodDetailActivity extends Activity implements GetAllCommentsListen
 		
 		Log.e("error",seller.toString());
 		
-		likeButton.setText("Ï²»¶("+likenumber.toString()+")");
+		String mylike = this.getString(R.string.like);
+		String myseller = this.getString(R.string.seller);
+		likeButton.setText(mylike+"("+likenumber.toString()+")");
 		titleText.setText(title.toString());
-		sellerButton.setText("Âô¼Ò("+seller.toString()+")");
+		sellerButton.setText(myseller+"("+seller.toString()+")");
 		
 		 String[] allowedContentTypes = new String[]{"image/png", "image/jpeg"};
 		 httpClient.get(logo, new BinaryHttpResponseHandler(allowedContentTypes) {

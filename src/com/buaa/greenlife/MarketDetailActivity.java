@@ -32,7 +32,6 @@ public class MarketDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_market_detail);
 		
-		
 		 marketCommentsListView = (ListView)findViewById(R.id.marketdetail_comment_listview);
 		 marketCommentsListView.setDivider(null);
 		 CommentslistItemAdapter = new CommentsAdapter(this, null);

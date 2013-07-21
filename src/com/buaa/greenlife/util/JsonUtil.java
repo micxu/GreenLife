@@ -71,5 +71,29 @@ public class JsonUtil {
         return allcomments;
     }
     
+    
+    public static HashMap<String, Object> praseMarketJson(String json){
+    	 HashMap<String, Object> map = new HashMap<String, Object>();
+        try {
+            
+            JSONObject jsonobject = new JSONObject(json);
+            String logo = jsonobject.getString("logo");
+            Log.e("error",logo.toString());
+            if (jsonobject !=  null){
+                logo = jsonobject.getString("logo");
+                map.put("logo", logo.toString());
+                String title = jsonobject.getString("title");
+                map.put("title", title.toString());
+                String location=jsonobject.getString("location");
+                map.put("location", location.toString());
+                String like_users_count = jsonobject.getString("like_users_count");
+                map.put("like_users_count",like_users_count.toString());      
+            }
+        } catch (JSONException e) {   
+            e.printStackTrace();
+        }
+        return map;
+    }
+ 
    
 }

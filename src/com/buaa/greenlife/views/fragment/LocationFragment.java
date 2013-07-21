@@ -82,22 +82,22 @@ public class LocationFragment extends BaseFragment {
 		double x_ = x;
 		double y_ = y;
 		GPSPoint point = new GPSPoint(x_ + 0.005, y_ + 0.01);
-		point.setId("bj_" + 1);
+		point.setId("2");
 		point.setTitle(context.getResources().getString(R.string.bidanyuan));
 		points.add(point);
 		
 		point = new GPSPoint(x_ - 0.01, y_ - 0.005);
-		point.setId("bj_" + 2);
+		point.setId("3");
 		point.setTitle(context.getResources().getString(R.string.yangguangshengjing));
 		points.add(point);
 		
 		point = new GPSPoint(x_ + 0.01, y_ - 0.015);
-		point.setId("bj_" + 3);
+		point.setId("4");
 		point.setTitle(context.getResources().getString(R.string.lvseyingxiong));
 		points.add(point);
 		
 		point = new GPSPoint(x_ - 0.01, y_ + 0.01);
-		point.setId("bj_" + 4);
+		point.setId("5");
 		point.setTitle(context.getResources().getString(R.string.taohuadao));
 		points.add(point);
 		
@@ -168,8 +168,8 @@ public class LocationFragment extends BaseFragment {
 				}
 				else{
 					Intent intent = new Intent(context, MarketDetailActivity.class);
-//					intent.putExtra("farm_id", detail_button.getFramId());
-//					intent.putExtra("farm_name", detail_button.getText());
+					intent.putExtra("farm_id", detail_button.getFramId());
+					intent.putExtra("farm_name", detail_button.getText());
 					startActivity(intent);
 				}
 			}

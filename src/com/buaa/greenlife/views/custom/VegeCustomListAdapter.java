@@ -30,7 +30,7 @@ public class VegeCustomListAdapter extends BaseAdapter {
     // Use 1/8th of the available memory for this memory cache.
     final int cacheSize = maxMemory / 8;
 
-    private LruCache<String,Bitmap> mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+    private LruCache<String, Bitmap> mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
         @Override
         protected int sizeOf(String key, Bitmap bitmap) {
             // The cache size will be measured in kilobytes rather than
@@ -81,7 +81,7 @@ public class VegeCustomListAdapter extends BaseAdapter {
         View vi = arg1;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
-        if (null == arg1){
+        if (null == arg1) {
             vi = inflater.inflate(R.layout.fragment_vegetablelistrow, null);
         }
 
@@ -95,47 +95,51 @@ public class VegeCustomListAdapter extends BaseAdapter {
 
         final String iconUrl = vege.get("logo");
 
-        if (mMemoryCache.get(iconUrl) != null){
+        if (mMemoryCache.get(iconUrl) != null) {
             thumb_image.setImageBitmap(mMemoryCache.get(iconUrl));
         } else {
-            String[] allowedContentTypes = new String[] { "image/png", "image/jpeg" };
-            httpClient.get(vege.get("logo"), new BinaryHttpResponseHandler(allowedContentTypes) {
-                @Override
-                public void onSuccess(byte[] fileData) {
-                    // Do something with the file
-                    try{
-                        AsyncTask<byte[],Integer,Bitmap> task = new AsyncTask<byte[],Integer,Bitmap>() {
+            try {
+                String[] allowedContentTypes = new String[]{"image/png", "image/jpeg"};
+                httpClient.get(vege.get("logo"), new BinaryHttpResponseHandler(allowedContentTypes) {
+                    @Override
+                    public void onSuccess(byte[] fileData) {
+                        // Do something with the file
+                        try {
+                            AsyncTask<byte[], Integer, Bitmap> task = new AsyncTask<byte[], Integer, Bitmap>() {
 
-                            @Override
-                            protected void onPreExecute() {
-                            }
-
-                            @Override
-                            protected void onPostExecute(Bitmap bitmap) {
-                                if (bitmap != null){
-                                    thumb_image.setImageBitmap(bitmap);
+                                @Override
+                                protected void onPreExecute() {
                                 }
-                            }
 
-                            @Override
-                            protected Bitmap doInBackground(byte[]... bytes) {
-                            	if(null == bytes[0])	return null;
-                            	Bitmap bitmap = null;
-                                try {
-                                    bitmap = BitmapFactory.decodeByteArray(bytes[0], 0, bytes[0].length);
-                                }catch (Exception e){
-                                    e.printStackTrace();
+                                @Override
+                                protected void onPostExecute(Bitmap bitmap) {
+                                    if (bitmap != null) {
+                                        thumb_image.setImageBitmap(bitmap);
+                                    }
                                 }
-                                mMemoryCache.put(iconUrl, bitmap);
-                                return bitmap;
-                            }
-                        };
-                        task.execute(fileData);
-                    } catch (Exception e){
-                        e.printStackTrace();
+
+                                @Override
+                                protected Bitmap doInBackground(byte[]... bytes) {
+                                    if (null == bytes[0]) return null;
+                                    Bitmap bitmap = null;
+                                    try {
+                                        bitmap = BitmapFactory.decodeByteArray(bytes[0], 0, bytes[0].length);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    addBitmapToMemoryCache(iconUrl, bitmap);
+                                    return bitmap;
+                                }
+                            };
+                            task.execute(fileData);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            });
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 

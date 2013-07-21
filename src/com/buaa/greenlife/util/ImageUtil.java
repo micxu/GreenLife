@@ -92,7 +92,6 @@ public class ImageUtil {
     public static boolean saveBitmapToSDCard(Bitmap bitmap , String imageName){
     	if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
     		File path = new File(FILE_FOLDER_PATH);
-    		//濡����欢澶逛�瀛��
     		if(!path.exists()){
     			path.mkdirs();
     		}
@@ -161,4 +160,6 @@ public class ImageUtil {
             return null;
         }
     }
+
+
 }

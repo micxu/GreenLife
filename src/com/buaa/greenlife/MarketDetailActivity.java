@@ -61,8 +61,8 @@ public class MarketDetailActivity extends Activity implements GetAllSellerListen
 		 number = String.valueOf((int)(Math.random() * 10+1)) ;
 		 
 		 mComments = new ArrayList<Comments>();
-		 mComments.add(new Comments("keith", "这家还行", "3.5", "2013-07-20T23:44:10Z"));
-		 mComments.add(new Comments("yuxiao", "买过一次", "3.0", "2013-07-21T12:44:10Z"));
+		 mComments.add(new Comments("keith", "nice", "3.5", "2013-07-20T23:44:10Z"));
+		 mComments.add(new Comments("yuxiao", "good", "3.0", "2013-07-21T12:44:10Z"));
 		 
 		 CommentslistItemAdapter.setData(mComments);
 

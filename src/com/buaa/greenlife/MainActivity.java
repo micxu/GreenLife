@@ -88,8 +88,8 @@ public class MainActivity extends FragmentActivity {
         mDrawerTitle = mTitle = getTitle();
         initDrawer();
 
-        fragmentMap.put(0, new VegetableListFragment(this,handler));
-        fragmentMap.put(1, new HealthyFoodFragment(this,handler));
+        fragmentMap.put(1, new VegetableListFragment(this,handler));
+        fragmentMap.put(0, new HealthyFoodFragment(this,handler));
         fragmentMap.put(2, new LocationFragment(this,handler));
         fragmentMap.put(3, new SnsFragment(this,handler));
         fragmentMap.put(4, new SettingAboutFragment(this,handler));

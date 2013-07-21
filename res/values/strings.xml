@@ -12,8 +12,8 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     <string-array name="function_array">
-        <item>绿色蔬菜</item>
         <item>放心食谱</item>
+        <item>绿色蔬菜</item>
         <item>周边附近</item>
         <item>好友消息</item>
         <item>关于设置</item>

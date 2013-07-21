@@ -8,14 +8,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
+import com.buaa.Utils;
 import com.buaa.greenlife.network.ImageCache;
 import com.buaa.greenlife.views.custom.SimpleItem;
 import com.buaa.greenlife.views.custom.SlideDrawerAdapter;
@@ -74,6 +75,11 @@ public class MainActivity extends FragmentActivity {
             fragmentManager.beginTransaction().replace(R.id.content_frame,fragmentMap.get(selected)).commit();
         }
     }
+    
+    protected void onInit(){
+    	PushManager.startWork(getApplicationContext(),
+				PushConstants.LOGIN_TYPE_API_KEY, Utils.getMetaValue(getApplicationContext(), "api_key"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +100,7 @@ public class MainActivity extends FragmentActivity {
             selectItem(0);
         }
         ImageCache.getInstance().setHandler(handler);
+        
     }
 
     private void selectItem(int pos){

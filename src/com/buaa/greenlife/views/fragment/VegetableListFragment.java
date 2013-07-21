@@ -127,7 +127,7 @@ public class VegetableListFragment extends BaseFragment implements GetVegeListLi
 
                 map.put("in_season_time", jObject.getString("in_season_time"));
                 map.put("logo", jObject.getString("logo"));
-                map.put("sellers", jObject.getString("sellers"));
+                map.put("sellers", jObject.getString("sellers_count"));
                 map.put("id", jObject.getString("id"));
                 map.put("title", jObject.getString("title"));
                 map.put("baidu_info", jObject.getString("baidu_info"));
